@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
 
+# Core config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
@@ -52,13 +52,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'src.wsgi.application'
 
 
+# Database
+
+DB_HOST = os.environ.get("POSTGRES_HOST")
+DB_PORT = os.environ.get("POSTGRES_PORT")
+DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+DB_USER = os.environ.get("POSTGRES_USER")
+DB_NAME = os.environ.get("POSTGRES_DB")
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT
     }
 }
 
+
+# Auth
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -75,6 +89,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Internationalization & Translation
 
 LANGUAGE_CODE = 'en-us'
 

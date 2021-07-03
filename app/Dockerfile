@@ -1,6 +1,10 @@
 FROM python:3.8-slim-buster
 
 RUN apt-get update \
+    && apt-get install -yq \
+    build-essential \
+    libpq-dev \
+    netcat \
 	&& pip install poetry
 
 WORKDIR /app
