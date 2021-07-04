@@ -1,12 +1,31 @@
- <h1>Book List</h1>
-  {% if book_list %}
-  <ul>
-    {% for book in book_list %}
-      <li>
-        <p>{{ book.title }} ({{book.author}})
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no books in the library.</p>
-  {% endif %}
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Book List</h1>
+{% if book_list %}
+{% for book in book_list %}
+<div class="card mb-3" style="max-width: 540px;">
+   <div class="row g-0">
+      <div class="col-md-4 my-auto">
+         <img src="{{ book.cover_url }}" class="img-fluid rounded-start" alt="No cover">
+      </div>
+      <div class="col-md-8">
+         <div class="card-body">
+            <h5 class="card-title">{{ book.title}}</h5>
+            <h6 class="text-muted">{{ book.author }}</h6>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><small>Release date: {{ book.publication_date }}</small></li>
+               <li class="list-group-item"><small>Pages: {{ book.page_count }}</small></li>
+               <li class="list-group-item"><small>Language: {{ book.get_language_display }}</small></li>
+               <li class="list-group-item"><small>ISBN: {{ book.isbn }}</small></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+{% endfor %}
+{% else %}
+<p>There are no books in the library.</p>
+{% endif %}
+{% endblock content %}
+

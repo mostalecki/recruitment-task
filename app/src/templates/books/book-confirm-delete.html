@@ -1,7 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
 <form method="POST">
     {% csrf_token %}
     The following book will be deleted. Are you sure?
     <p>{{ object.title }} ({{ object.author }})</p>
-    <input type="submit" value="Confirm" name="confirm_delete" />
-    <input type="submit" value="Cancel" name="cancel"/>
+    <input type="submit" value="Confirm" name="confirm_delete" class="btn btn-danger"/>
+    <input type="submit" value="Cancel" name="cancel" class="btn"/>
 </form>
+{% endblock content %}

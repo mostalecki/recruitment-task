@@ -17,7 +17,9 @@ class BookCreateView(CreateView):
 
     def get_success_url(self):
         instance: Book = self.object
-        messages.add_message(self.request, messages.SUCCESS, f"Successfully added {instance.title}")
+        messages.add_message(
+            self.request, messages.SUCCESS, f"Successfully added {instance.title}"
+        )
         return reverse_lazy("books:book-list")
 
 
@@ -37,5 +39,7 @@ class BookDeleteView(DeleteView):
 
     def get_success_url(self):
         instance: Book = self.object
-        messages.add_message(self.request, messages.SUCCESS, f"Successfully deleted {instance.title}")
+        messages.add_message(
+            self.request, messages.SUCCESS, f"Successfully deleted {instance.title}"
+        )
         return reverse_lazy("books:book-list")
