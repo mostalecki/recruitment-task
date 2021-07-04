@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    The following book will be deleted. Are you sure?
+    <p>{{ object.title }} ({{ object.author }})</p>
+    <input type="submit" value="Confirm" name="confirm_delete" />
+    <input type="submit" value="Cancel" name="cancel"/>
+</form>
