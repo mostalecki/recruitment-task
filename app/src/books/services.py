@@ -33,10 +33,10 @@ def google_books_response_parser(response: Dict) -> List[Dict]:
         {
             "volume_id": item["id"],
             "title": item["volumeInfo"]["title"],
-            "author": ", ".join(item["volumeInfo"]["authors"]),
+            "author": ", ".join(item["volumeInfo"]["authors"]) if "authors" in item["volumeInfo"] else None,
             "publication_date": get_formatted_publication_date(
                 item["volumeInfo"]["publishedDate"]
-            ),
+            ) if "publishedDate" in item["volumeInfo"] else None,
             "page_count": item.get("volumeInfo").get("pageCount", None),
             "cover_url": item["volumeInfo"]["imageLinks"]["thumbnail"]
             if "imageLinks" in item["volumeInfo"]
