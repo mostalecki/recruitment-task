@@ -7,10 +7,10 @@ from src.books.validators import isbn_validator
 class Book(models.Model):
     title = models.CharField(max_length=256)
     author = models.CharField(max_length=256, null=True, blank=True)
-    publication_date = models.DateField()
+    publication_date = models.DateField(null=True, blank=True)
     page_count = models.PositiveIntegerField(null=True, blank=True)
-    cover_url = models.URLField()
-    language = models.CharField(max_length=32, choices=Language.choices)
+    cover_url = models.URLField(null=True, blank=True)
+    language = models.CharField(max_length=32, choices=Language.choices, null=True, blank=True)
     isbn = models.CharField(
         verbose_name="ISBN", max_length=32, null=True, blank=True, validators=[isbn_validator]
     )

@@ -7,6 +7,7 @@ class Language:
     """Language names and their ISO 639-1 codes"""
 
     choices: Final[StrChoicesType] = (
+        ("un", "-"),
         ("ab", "Abkhazian"),
         ("aa", "Afar"),
         ("af", "Afrikaans"),
