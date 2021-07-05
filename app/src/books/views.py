@@ -67,17 +67,19 @@ class BookImportView(View):
         )
 
     def post(self, *args, **kwargs):
-        volume_ids = self.request.POST["volume_ids"]
-        books_to_add = [
-            book
-            for book in self.request.session["imported_books_context"]["books"]
-            if book["volume_id"] in volume_ids
-        ]
-        books = books_bulk_create_from_dict(books_to_add)
+        if "volume_ids" in self.request.POST:
+            volume_ids = self.request.POST["volume_ids"]
+            books_to_add = [
+                book
+                for book in self.request.session["imported_books_context"]["books"]
+                if book["volume_id"] in volume_ids
+            ]
+            books = books_bulk_create_from_dict(books_to_add)
 
-        Book.objects.bulk_create(books)
+            Book.objects.bulk_create(books)
 
-        messages.add_message(
-            self.request, messages.SUCCESS, f"Successfully added {len(books)} books"
-        )
+            messages.add_message(
+                self.request, messages.SUCCESS, f"Successfully added {len(books)} books"
+            )
+
         return redirect("books:book-list")
