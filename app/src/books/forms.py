@@ -18,4 +18,4 @@ class BookForm(forms.ModelForm):
 
 
 class BookSearchForm(forms.Form):
-    query = forms.CharField(max_length=128, required=False)
+    query = forms.CharField(max_length=128, required=False, label="Keywords")

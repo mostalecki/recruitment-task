@@ -1,11 +1,30 @@
 {% extends "base.html" %}
-
 {% block content %}
+<div class="card mb-3" style="max-width: 540px;">
+   <div class="row g-0">
+      <div class="col-md-4 my-auto">
+         <img src="{{ object.cover_url }}" class="img-fluid rounded-start" alt="No cover">
+      </div>
+      <div class="col-md-8">
+         <div class="card-body">
+            <h5 class="card-title">{{ object.title}}</h5>
+            <h6 class="text-muted">{{ object.author }}</h6>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><small>Release date: {{ object.publication_date }}</small></li>
+               <li class="list-group-item"><small>Pages: {{ object.page_count }}</small></li>
+               <li class="list-group-item"><small>Language: {{ object.get_language_display }}</small></li>
+               <li class="list-group-item"><small>ISBN: {{ object.isbn }}</small></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
 <form method="POST">
-    {% csrf_token %}
-    The following book will be deleted. Are you sure?
-    <p>{{ object.title }} ({{ object.author }})</p>
-    <input type="submit" value="Confirm" name="confirm_delete" class="btn btn-danger"/>
-    <a class="btn" href="{% url 'books:book-list' %}">Cancel</a>
+   {% csrf_token %}
+   This book will be deleted. Are you sure?
+   <p>
+      <input type="submit" value="Confirm" name="confirm_delete" class="btn btn-danger"/>
+      <a class="btn" href="{% url 'books:book-list' %}">Cancel</a>
+   </p>
 </form>
 {% endblock content %}

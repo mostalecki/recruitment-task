@@ -8,8 +8,8 @@ class BookFilter(django_filters.FilterSet):
     author = django_filters.CharFilter(lookup_expr="iexact")
     language = django_filters.ChoiceFilter(choices=Language.choices)
     publication_date__gt = django_filters.DateFilter(
-        field_name="publication_date", lookup_expr="gt"
+        field_name="publication_date", lookup_expr="gt", label="Published after"
     )
-    publication_date__lt = django_filters.NumberFilter(
-        field_name="publication_date", lookup_expr="lt"
+    publication_date__lt = django_filters.DateFilter(
+        field_name="publication_date", lookup_expr="lt", label="Published before"
     )
