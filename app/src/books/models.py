@@ -12,7 +12,10 @@ class Book(models.Model):
     cover_url = models.URLField()
     language = models.CharField(max_length=32, choices=Language.choices)
     isbn = models.CharField(
-        max_length=13, null=True, blank=True, validators=[isbn_validator]
+        verbose_name="ISBN", max_length=13, null=True, blank=True, validators=[isbn_validator]
     )
     # volume_id is used when fetching books from Google Books API
     volume_id = models.CharField(max_length=256, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.title} by {self.author}"
