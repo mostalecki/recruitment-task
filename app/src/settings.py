@@ -13,12 +13,19 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 
 
 INSTALLED_APPS = [
+    # Django apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # 3rd party apps
+    "crispy_forms",
+    "django_filters",
+    "rest_framework",
+    # local apps
+    "src.books",
 ]
 
 MIDDLEWARE = [
@@ -36,7 +43,7 @@ ROOT_URLCONF = "src.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "src", "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -50,6 +57,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "src.wsgi.application"
+
+
+# django-rest-framework
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": (
+        "djangorestframework_camel_case.render.CamelCaseJSONRenderer",
+    ),
+}
 
 
 # Database
@@ -100,3 +116,8 @@ STATIC_URL = "/static/"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# API keys
+
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
