@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     "crispy_forms",
     "django_filters",
+    "rest_framework",
     # local apps
     "src.books",
 ]
@@ -56,6 +57,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "src.wsgi.application"
+
+
+# django-rest-framework
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": (
+        "djangorestframework_camel_case.render.CamelCaseJSONRenderer",
+    ),
+}
 
 
 # Database
