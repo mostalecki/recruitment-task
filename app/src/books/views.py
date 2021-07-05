@@ -1,14 +1,18 @@
+from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.contrib import messages
 
 from src.books.forms import BookForm
 from src.books.models import Book
+from src.books.filters import BookFilter
 
 
-class BookListView(ListView):
-    model = Book
-    template_name = "books/book-list.html"
+class BookListView(View):
+    def get(self, request, *args, **kwargs):
+        f = BookFilter(self.request.GET, queryset=Book.objects.all())
+        return render(request, "books/book-list.html", {'filter': f})
 
 
 class BookCreateView(CreateView):

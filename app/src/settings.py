@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party apps
     "crispy_forms",
+    "django_filters",
     # local apps
     "src.books",
 ]

@@ -2,8 +2,12 @@
 
 {% block content %}
 <h1>Book List</h1>
-{% if book_list %}
-{% for book in book_list %}
+<form method="GET">
+        {{ filter.form.as_p }}
+        <button type="submit" class="btn">Search</button>
+</form>
+{% if filter.qs %}
+{% for book in filter.qs %}
 <div class="card mb-3" style="max-width: 540px;">
    <div class="row g-0">
       <div class="col-md-4 my-auto">
@@ -25,7 +29,7 @@
 </div>
 {% endfor %}
 {% else %}
-<p>There are no books in the library.</p>
+<p>No books found.</p>
 {% endif %}
 {% endblock content %}
 

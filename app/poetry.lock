@@ -36,6 +36,17 @@ version = "1.12.0"
 
 [[package]]
 category = "main"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+name = "django-filter"
+optional = false
+python-versions = ">=3.5"
+version = "2.4.0"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[[package]]
+category = "main"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
 name = "psycopg2"
 optional = false
@@ -59,7 +70,7 @@ python-versions = ">=3.5"
 version = "0.4.1"
 
 [metadata]
-content-hash = "b2aa40db193ee8fe7c50456405bae8ced4a0d7a3abf8079395e7045c8dbded8d"
+content-hash = "5dcce11e9f5ced8e78675b335366e596571fc109f24b6a260b53efa640479ac6"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -74,6 +85,10 @@ django = [
 django-crispy-forms = [
     {file = "django-crispy-forms-1.12.0.tar.gz", hash = "sha256:d196db62ee8b4fc32d1f9583d0e4be1bb17328b662682c1ecb9fb77bbc0fcf77"},
     {file = "django_crispy_forms-1.12.0-py3-none-any.whl", hash = "sha256:a3320356c84d0cdc631e1ec7b8908aa0117bc2a5f0ab1d053d33eba08f584808"},
+]
+django-filter = [
+    {file = "django-filter-2.4.0.tar.gz", hash = "sha256:84e9d5bb93f237e451db814ed422a3a625751cbc9968b484ecc74964a8696b06"},
+    {file = "django_filter-2.4.0-py3-none-any.whl", hash = "sha256:e00d32cebdb3d54273c48f4f878f898dced8d5dfaad009438fe61ebdf535ace1"},
 ]
 psycopg2 = [
     {file = "psycopg2-2.9.1-cp36-cp36m-win32.whl", hash = "sha256:7f91312f065df517187134cce8e395ab37f5b601a42446bdc0f0d51773621854"},
