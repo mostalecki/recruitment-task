@@ -116,3 +116,8 @@ STATIC_URL = "/static/"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# API keys
+
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")

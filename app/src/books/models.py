@@ -8,9 +8,11 @@ class Book(models.Model):
     title = models.CharField(max_length=256)
     author = models.CharField(max_length=256, null=True, blank=True)
     publication_date = models.DateField()
-    page_count = models.PositiveIntegerField()
+    page_count = models.PositiveIntegerField(null=True, blank=True)
     cover_url = models.URLField()
     language = models.CharField(max_length=32, choices=Language.choices)
     isbn = models.CharField(
         max_length=13, null=True, blank=True, validators=[isbn_validator]
     )
+    # volume_id is used when fetching books from Google Books API
+    volume_id = models.CharField(max_length=256, null=True, blank=True)

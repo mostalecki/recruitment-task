@@ -1,9 +1,9 @@
-from django.forms import ModelForm
+from django import forms
 
 from src.books.models import Book
 
 
-class BookForm(ModelForm):
+class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = [
@@ -15,3 +15,7 @@ class BookForm(ModelForm):
             "language",
             "isbn",
         ]
+
+
+class BookSearchForm(forms.Form):
+    query = forms.CharField(max_length=128, required=False)
